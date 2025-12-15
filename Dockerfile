@@ -15,7 +15,13 @@ RUN dnf update -y \
     && dnf clean all
 
 # Install PostgreSQL 17
-RUN dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm \
+RUN rpm --import https://download.postgresql.org/pub/repos/yum/keys/PGDG-RPM-GPG-KEY-RHEL \
+    && echo "[pgdg17]" > /etc/yum.repos.d/pgdg.repo \
+    && echo "name=PostgreSQL 17 for RHEL/CentOS 9 - x86_64" >> /etc/yum.repos.d/pgdg.repo \
+    && echo "baseurl=https://download.postgresql.org/pub/repos/yum/17/redhat/rhel-9-x86_64" >> /etc/yum.repos.d/pgdg.repo \
+    && echo "enabled=1" >> /etc/yum.repos.d/pgdg.repo \
+    && echo "gpgcheck=1" >> /etc/yum.repos.d/pgdg.repo \
+    && echo "gpgkey=https://download.postgresql.org/pub/repos/yum/keys/PGDG-RPM-GPG-KEY-RHEL" >> /etc/yum.repos.d/pgdg.repo \
     && dnf install -y postgresql17 \
     && dnf clean all
 
