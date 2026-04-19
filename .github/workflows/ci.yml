@@ -10,7 +10,7 @@ permissions:
   packages: write
 
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository }}:latest
+  IMAGE_NAME: ghcr.io/${{ github.repository }}:sync-odoo
 
 jobs:
   build-and-push:
