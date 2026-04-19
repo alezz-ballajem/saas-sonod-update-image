@@ -40,3 +40,4 @@ jobs:
           push: ${{ github.repository_owner == 'sonodtech' && github.ref == 'refs/heads/main' }}
           cache-from: type=registry,ref=${{ env.IMAGE_NAME }}
           cache-to: type=inline
+
